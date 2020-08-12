@@ -1,0 +1,231 @@
+$dark-color: #161620;
+$primary-color: #D07590;
+$light-color: #7093AF;
+$secondary-color: #593D6F;
+$font-stack: 'Raleway', sans-serif;
+
+*{
+    box-sizing: border-box;
+}
+
+
+button{
+    transition: all 0.2s linear;
+    cursor: pointer;
+    &:hover{
+        opacity: 0.9;
+    }
+    &:focus{
+        outline: none;
+    }
+    
+}
+
+
+body{
+    margin: 0;
+    padding: 30px 0;
+    font-family: $font-stack;
+    overflow-x: hidden;
+    background-color: $dark-color;
+    text-align: center;
+    color: $light-color;
+}
+
+
+.flash-container{
+    position: fixed;
+    top: 50%;
+    right: 0;
+    z-index: 100;
+    width: 350px;
+    border-radius: 5px;
+    padding: 15px 30px;
+    text-align: right;
+    transform: translateX(100%);
+    transition: all 0.2s linear;
+
+    i{
+        color: #fff;
+        cursor: pointer;
+        position: absolute;
+        top: 5px;
+        left: 5px;
+    }
+
+    &.success{
+        transform: translateX(0);
+    }
+    
+    
+    &.danger{
+        transform: translateX(0);
+        background-color: lighten($color: $secondary-color, $amount: 30%);
+        color: $secondary-color;
+    }
+}
+
+
+form{
+    width: 60%;
+    position: relative;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    &.warning{
+        small{
+            color: $secondary-color;
+        }
+    }
+    input{
+        width: 100%;
+        padding: 17px 25px;
+        border-radius: 50px;
+        background-color: lighten($color: $dark-color, $amount: 5%);
+        border: none;
+        font-family: $font-stack;
+        color: $light-color;
+        font-size: 17px;
+        &:focus{
+            outline: none;
+        }
+    }
+
+    button{
+        position: absolute;
+        top: 50%;
+        right: 0;
+        padding: 15px 30px;
+        border-radius: 50px;
+        transform: translateY(-50%);
+        background-color: $primary-color;
+        color: #fff;
+        font-family: $font-stack;
+        border: none;
+        font-weight: 700;
+    }
+}
+
+.output{
+
+    width: 45%;
+    margin: 10px auto;
+    .song-card{
+        width: 100%;
+        margin: 5px auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        border-top: lighten($color: $dark-color, $amount: 5%) 1px solid;
+        &:nth-child(1){
+            border-top: none;
+        }
+        .song-card-left{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            img{
+                border-radius: 100%;
+                margin-right: 10px;
+            }
+            .song-info{
+                text-align: left;
+                font-size: 15px;
+            }
+        }
+        button{
+            padding: 10px 22px;
+            background-color: $primary-color;
+            font-family: $font-stack;
+            border: none;
+            color: #fff;
+            border-radius: 5px;
+        }
+    }
+}
+
+.progress-container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: transparent;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    &.active{
+        display: flex;
+    }
+    .progress{
+        width: 45px;
+        height: 45px;
+        border-radius: 100%;
+        background-color: transparent;
+        border: darken($color: $dark-color, $amount: 2%) 2px solid;
+        border-top: 2px solid $secondary-color;
+        animation: rotate 0.6s linear infinite;
+        
+    }
+}
+
+.btn-container{
+    margin: 30px auto;
+    width: 60%;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    button{
+        padding: 12px 30px;
+        background-color: $secondary-color;
+        font-family: $font-stack;
+        border: none;
+        color: #fff;
+        border-radius: 5px;
+        display: none;
+        &.active{
+            display: inline-block;
+            margin: 0 40px;
+        }
+    }
+}
+
+
+@keyframes rotate{
+    0%{
+        transform: rotate(45deg);
+    }
+    20%{
+        transform: rotate(90deg);
+    }
+    50%{
+        transform: rotate(180deg);
+    }
+    70%{
+        transform: rotate(220deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    form{
+        width: 90%;
+        input{
+            font-size: 14px;
+        }
+    }
+
+    .output{
+        width: 90%;
+        .song-card{
+            width: 100%;
+        }
+    }
+}

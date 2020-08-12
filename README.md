@@ -1,0 +1,1 @@
+This small project allows you to search lyric of many songs with very simple api.
